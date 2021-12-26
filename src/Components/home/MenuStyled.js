@@ -22,18 +22,23 @@ export const MenuStyled = styled.div`
 
   .container {
     padding: 10px;
-
-    /* position: relative; */
+    display: flex;
     height: 50px;
     margin-top: 20px;
   }
   .container__item {
+    text-align: center;
+    width: 200px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    @media (min-width: 768px) {
+      width: 100%;
+      height: 80px;
+    }
   }
   button {
-    /* position: absolute; */
+    position: absolute;
     font-size: 26px;
     /* line-height: 40px; */
     outline: none;

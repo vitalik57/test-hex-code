@@ -4,18 +4,22 @@ const HexList = ({ hex, delate }) => {
     <>
       {" "}
       {hex.map(item => (
-        <div className="container" style={{ background: `${item.hexCode}` }}>
-          <div className="container__item">
-            <p>{item.hexCode}</p>
-            <button
-              type="button"
-              onClick={() => {
-                delate(item.id);
-              }}
-            >
-              X
-            </button>
+        <div className="container">
+          <div style={{ background: `${item.hexCode.first}` }} className="container__item">
+            <p>{item.hexCode.first}</p>
           </div>
+          <div style={{ background: `${item.hexCode.second}` }} className="container__item">
+            {" "}
+            <p>{item.hexCode.second}</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              delate(item.id);
+            }}
+          >
+            X
+          </button>
         </div>
       ))}
     </>

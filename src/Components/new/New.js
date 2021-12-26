@@ -4,17 +4,17 @@ import { addNewHex } from "../../redux/action/hexAction";
 import { v4 as uuidv4 } from "uuid";
 import { NavLink } from "react-router-dom";
 import { NewStyled } from "./NewStyled";
+
 const New = ({ addNewHex }) => {
-  const [hexCode, setVal] = useState("");
+  const [hexCode, setVal] = useState({ first: "", second: "" });
   const [active, setActive] = useState(false);
 
   const handleChange = e => {
-    const input = e.target.value;
-    setVal(input);
-
+    const { name, value } = e.target;
+    setVal(prev => ({ ...prev, [name]: value }));
     const regex = new RegExp("^#([0-9a-f]{3}){1,2}$");
 
-    if (regex.test(input)) {
+    if (regex.test(hexCode.first && hexCode.first)) {
       setActive(true);
     } else {
       setActive(false);
@@ -24,12 +24,27 @@ const New = ({ addNewHex }) => {
   const add = () => {
     const item = { id: uuidv4(), hexCode: hexCode };
     addNewHex(item);
-    setVal("");
+    setVal({ first: "", second: "" });
   };
   return (
     <NewStyled>
       <form>
-        <input className="form__input" type="text" onChange={handleChange} value={hexCode} placeholder="Create hex" />
+        <input
+          className="form__input"
+          name="first"
+          type="text"
+          onChange={handleChange}
+          value={hexCode.first}
+          placeholder="Create hex"
+        />
+        <input
+          className="form__input"
+          name="second"
+          type="text"
+          onChange={handleChange}
+          value={hexCode.second}
+          placeholder="Create hex"
+        />
         <NavLink activeStyle={{ color: "red", textDecoration: "none" }} to="/">
           {" "}
           <button type="button" disabled={!active} onClick={add}>

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 export const NewStyled = styled.div`
+  display: flex;
+  flex-direction: column;
   .form__input {
-    width: 587px;
+    width: 100%;
     opacity: 0.7;
     box-sizing: border-box;
     outline: none;
@@ -26,7 +28,7 @@ export const NewStyled = styled.div`
     border-radius: 16px; */
     /* display: block; */
     font-size: 1.1em;
-    width: 120px;
+    width: 100%;
     height: 45px;
     text-decoration: none;
     font: bold 14px arial;
